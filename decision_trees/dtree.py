@@ -85,26 +85,22 @@ def ID3(S, D):
 
 if __name__ == '__main__':
     S = [
-            {'Tall': True, 'Fat': 1, 'Happy': True,},
-            {'Tall': True, 'Fat': 1, 'Happy': False},
-            {'Tall': True, 'Fat': 2, 'Happy': True},
-            {'Tall': False, 'Fat': 3, 'Happy': False} ]
-    print(percent(S, 'Happy'))
-    print(percent(S, 'Fat', 2))
-    print(H(S, 'Happy'))
-    print(Gain(S, 'Happy', 'Fat'))
-
-    cutoff = 6.9
-    h = lambda x: x >= cutoff
-    S = [
-            {'Gender': 'M', 'Height': h(5.2), 'King': False},
-            {'Gender': 'M', 'Height': h(6.2), 'King': False},
-            {'Gender': 'M', 'Height': h(6.8), 'King': False},
-            {'Gender': 'M', 'Height': h(6.9), 'King': True},
-            {'Gender': 'M', 'Height': h(6.1), 'King': True},
-            {'Gender': 'F', 'Height': h(5.3), 'King': True},
-            {'Gender': 'F', 'Height': h(6.2), 'King': False},
+            {'Tall': True,  'Fat': 1,   'Happy': True,},
+            {'Tall': True,  'Fat': 0.5, 'Happy': False},
+            {'Tall': True,  'Fat': 2,   'Happy': True},
+            {'Tall': False, 'Fat': 3,   'Happy': False},
             ]
-    print('Entropy of King:', H(S, 'King'))
-    print('Gain for Gender:', Gain(S, 'King', 'Gender'))
-    print('Gain for Height:', Gain(S, 'King', 'Height'))
+
+    print(ID3(S, 'Happy'))
+
+    S = [
+            {'Male': True,  'Height': 5.2, 'King': False},
+            {'Male': True,  'Height': 6.2, 'King': False},
+            {'Male': True,  'Height': 6.8, 'King': False},
+            {'Male': True,  'Height': 6.9, 'King': True},
+            {'Male': True,  'Height': 6.1, 'King': True},
+            {'Male': False, 'Height': 5.3, 'King': True},
+            {'Male': False, 'Height': 6.2, 'King': False},
+            ]
+
+    print(ID3(S, 'King'))
